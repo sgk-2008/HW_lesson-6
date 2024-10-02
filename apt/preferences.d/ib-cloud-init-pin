@@ -1,0 +1,11 @@
+Package: cloud-init
+Pin: version 24*
+Pin-Priority: -1
+
+Package: cloud-init
+Pin: version 23*
+Pin-Priority: 1001
+
+Package: cloud-init
+Pin: version 22*
+Pin-Priority: 1001
