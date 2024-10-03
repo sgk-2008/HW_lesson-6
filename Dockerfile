@@ -1,4 +1,4 @@
-FROM openjdk:8-jdk-alpine
+FROM openjdk:8-jdk
 VOLUME /tmp
 RUN apt update
 RUN apt install -y tomcat10
