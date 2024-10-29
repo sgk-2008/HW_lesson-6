@@ -1,11 +1,7 @@
-FROM openjdk:8-jdk
-VOLUME /tmp
-RUN apt update
-RUN apt install -y tomcat10
-RUN apt install -y maven
-RUN atp install -y git
-RUN git clone https://github.com/boxfuse/boxfuse-sample-java-war-hello.git
-RUN mvn package
+FROM tomcat:9.0-jdk8
+RUN apt-get update && apt-get install -y wget maven git
+RUN git clone https://github.com/boxfuse/boxfuse-sample-java-war-hello.git "/tmp/mvn/1"
+RUN mvn package -B -f /tmp/mvn/1
+RUN cp /tmp/mvn/1/target/hello-1.0.war /usr/local/tomcat/webapps/
 EXPOSE 8080
-RUN cp hello-1.0.war /var/lib/tomcat10/webapps/
-RUN /var/lib/tomcat10/webapps/hello-1.0/
+CMD ["catalina.sh", "run"]
